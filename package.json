@@ -1,6 +1,6 @@
 {
   "name": "reactive-resume",
-  "version": "3.8.5",
+  "version": "3.8.6",
   "private": true,
   "scripts": {
     "dev": "dotenv -- turbo run dev",
