@@ -1,0 +1,33 @@
+# Utilisation de l'image officielle Node.js
+FROM node:lts-alpine
+
+# Définition du répertoire de travail
+WORKDIR /app
+
+# Installation des dépendances système requises
+RUN apk add --no-cache g++ git make curl python3 libc6-compat \
+  && corepack enable && corepack prepare pnpm@latest --activate
+
+# Copie des fichiers du projet
+COPY turbo.json turbo.json
+COPY tsconfig.base.json tsconfig.base.json
+COPY package.json pnpm-*.yaml ./
+COPY schema/package.json ./schema/package.json
+COPY client/package.json ./client/package.json
+COPY server/package.json ./server/package.json
+COPY schema ./schema
+COPY client ./client
+COPY server ./server
+
+# Installation des dépendances du workspace
+RUN pnpm install --no-frozen-lockfile
+
+# Construction du projet
+RUN pnpm exec turbo build
+
+# Exposition du port pour le serveur
+EXPOSE 3000
+
+# Démarrage de l'application client
+CMD ["pnpm", "start", "--filter", "client"]
+

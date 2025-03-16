@@ -1,7 +1,5 @@
 {
   "name": "schema",
-  "version": "1.0.0",
-  "private": true,
   "type": "commonjs",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -15,4 +13,3 @@
     "typescript": "^5.1.6"
   }
 }
-

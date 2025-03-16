@@ -11,7 +11,10 @@ COPY package.json pnpm-*.yaml ./
 COPY ./schema/package.json ./schema/package.json
 COPY ./client/package.json ./client/package.json
 
-RUN pnpm install --frozen-lockfile
+COPY ./schema ./schema
+COPY ./client ./client
+
+RUN pnpm install --no-frozen-lockfile
 
 FROM base as builder
 
@@ -31,7 +34,8 @@ FROM base as production
 COPY --from=builder /app/package.json /app/pnpm-*.yaml ./
 COPY --from=builder /app/client/package.json ./client/package.json
 
-RUN pnpm install --filter client --prod --frozen-lockfile --workspace-root
+RUN pnpm list --depth=0
+RUN pnpm install --filter client --prod --no-frozen-lockfile --workspace-root
 
 COPY --from=builder /app/client/.next ./client/.next
 COPY --from=builder /app/client/public ./client/public
