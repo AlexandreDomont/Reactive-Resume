@@ -207,7 +207,7 @@ const Home: NextPage = () => {
         <div className={styles.version}>
           <Footer className="font-semibold leading-5 opacity-50" />
 
-          <div>v{process.env.appVersion} by Alexandre Domont 2025/06/30 </div>
+          <div>v{process.env.appVersion} by Alexandre Domont 2025/07/02 </div>
         </div>
 
         <div className={styles.actions}>
