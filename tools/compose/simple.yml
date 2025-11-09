@@ -2,11 +2,15 @@
 # The only two exposed ports here are from minio (:9000) and the app itself (:3000).
 # If these ports are changed, ensure that the env vars passed to the app are also changed accordingly.
 
+version: "3"
+
 services:
   # Database (Postgres)
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
+    ports:
+      - "5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -36,6 +40,8 @@ services:
   chrome:
     image: ghcr.io/browserless/chromium:latest
     restart: unless-stopped
+    ports:
+        - "3000"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
@@ -46,7 +52,7 @@ services:
       PROXY_SSL: "false"
 
   app:
-    image: reactive-resume:custom.4.5.8.2025-11-09
+    image: reactive-resume:custom.4.5.5.2025-11-09
     restart: unless-stopped
     ports:
       - "3000:3000"
