@@ -46,7 +46,7 @@ services:
       PROXY_SSL: "false"
 
   app:
-    image: amruthpillai/reactive-resume:latest
+    image: reactive-resume:custom.4.5.8.2025-11-09
     restart: unless-stopped
     ports:
       - "3000:3000"
