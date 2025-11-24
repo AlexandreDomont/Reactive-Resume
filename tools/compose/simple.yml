@@ -1,6 +1,7 @@
 # In this Docker Compose example, it assumes that you maintain a reverse proxy externally (or chose not to).
 # The only two exposed ports here are from minio (:9000) and the app itself (:3000).
 # If these ports are changed, ensure that the env vars passed to the app are also changed accordingly.
+version: "3" 
 
 services:
   # Database (Postgres)
@@ -46,7 +47,7 @@ services:
       PROXY_SSL: "false"
 
   app:
-    image: amruthpillai/reactive-resume:latest
+    image: reactive-resume:custom.4.5.5.2025-11-24.2
     restart: unless-stopped
     ports:
       - "3000:3000"
