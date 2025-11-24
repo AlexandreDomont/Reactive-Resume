@@ -1,14 +1,17 @@
 import { StrictMode } from "react";
 import * as ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router";
-
 import { router } from "./router";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = ReactDOM.createRoot(document.querySelector("#root")!);
+const root = ReactDOM.createRoot(
+  document.querySelector("#root") as HTMLElement
+);
 
 root.render(
   <StrictMode>
+    <div className="w-full bg-red-700 text-white text-center py-1 text-xs font-semibold z-50">
+      ⚠️ Environnement de développement — Attention DEV ⚠️
+    </div>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 );
