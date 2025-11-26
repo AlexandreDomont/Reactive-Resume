@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../compose/simple.yml
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f ../compose/simple.yml
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - env:
+            - name: ACCESS_TOKEN_SECRET
+              value: access_token_secret
+            - name: CHROME_TOKEN
+              value: chrome_token
+            - name: CHROME_URL
+              value: ws://chrome:3000
+            - name: DATABASE_URL
+              value: postgresql://postgres:postgres@postgres:5432/postgres
+            - name: MAIL_FROM
+              value: noreply@localhost
+            - name: NODE_ENV
+              value: production
+            - name: PORT
+              value: "3000"
+            - name: PUBLIC_URL
+              value: http://localhost:3000
+            - name: REFRESH_TOKEN_SECRET
+              value: refresh_token_secret
+            - name: STORAGE_ACCESS_KEY
+              value: minioadmin
+            - name: STORAGE_BUCKET
+              value: default
+            - name: STORAGE_ENDPOINT
+              value: minio
+            - name: STORAGE_PORT
+              value: "9000"
+            - name: STORAGE_REGION
+              value: us-east-1
+            - name: STORAGE_SECRET_KEY
+              value: minioadmin
+            - name: STORAGE_SKIP_BUCKET_CHECK
+              value: "false"
+            - name: STORAGE_URL
+              value: http://localhost:9000/default
+            - name: STORAGE_USE_SSL
+              value: "false"
+          image: reactive-resume:custom.4.5.8.2025-11-25
+          name: app
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+status: {}

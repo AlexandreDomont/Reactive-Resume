@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <StrictMode>
     <div className="w-full bg-red-700 text-white text-center py-1 text-xs font-semibold z-50">
-      ⚠️ Environnement de développement — Attention DEV ⚠️
+      ⚠️ Environnement de développement — Attention Alexandre ⚠️
     </div>
     <RouterProvider router={router} />
   </StrictMode>
