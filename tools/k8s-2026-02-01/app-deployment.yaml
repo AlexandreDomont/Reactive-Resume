@@ -40,7 +40,7 @@ spec:
             - name: PORT
               value: "3000"
             - name: PUBLIC_URL
-              value: http://j4.76b08536-cb0a-4f33-955f-a322dfc8ed59.nodes.k8s.fr-par.scw.cloud:30080
+              value: http://localhost:3000
             - name: REFRESH_TOKEN_SECRET
               value: refresh_token_secret
             - name: STORAGE_ACCESS_KEY
@@ -58,10 +58,10 @@ spec:
             - name: STORAGE_SKIP_BUCKET_CHECK
               value: "false"
             - name: STORAGE_URL
-              value: http://j4.76b08536-cb0a-4f33-955f-a322dfc8ed59.nodes.k8s.fr-par.scw.cloud:30900/default
+              value: http://localhost:9000/default
             - name: STORAGE_USE_SSL
               value: "false"
-          image: aldodockerhub/reactive-resume:custom.4.5.5.2025-11-24.2 
+          image: reactive-resume:custom.4.5.9.2026-01-31
           name: app
           ports:
             - containerPort: 3000
